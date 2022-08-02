@@ -47,7 +47,7 @@ export default class SortingVisualizer extends React.Component {
                 array_bars[index2].style.height = temp_ht;
                 array_bars[index2].style.backgroundColor = `black`;
                 array_bars[index1].style.backgroundColor = `blue`;
-              }, i * 200);
+              }, i * 2);
             
         }
     }
