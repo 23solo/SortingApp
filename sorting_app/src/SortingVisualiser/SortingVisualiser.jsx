@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import './SortingVisualiser.css';
 
+const sleep_secs = 1;
+
 export default class SortingVisualizer extends React.Component {
   constructor(props){
     super(props);
@@ -53,7 +55,23 @@ export default class SortingVisualizer extends React.Component {
         array_bars[index2].style.height = temp_ht;
         array_bars[index2].style.backgroundColor = `black`;
         array_bars[index1].style.backgroundColor = `blue`;
-      }, i * 50);
+      }, i * sleep_secs);
+
+    }
+  }
+
+  async getMergeSort() {
+    
+    const animation_pair_index = await this.getApi('merge_sort', this.state.array);
+    const array_bars = document.getElementsByClassName('array-bar');
+    for(let i = 0; i< animation_pair_index.length; i++ ){
+
+      setTimeout(() => {
+        var index = animation_pair_index[i][0];
+        var height = animation_pair_index[i][1];
+        array_bars[index].style.height = `${height}px`;
+        array_bars[index].style.backgroundColor = `black`;
+      }, i * sleep_secs);
 
     }
   }
@@ -72,16 +90,12 @@ export default class SortingVisualizer extends React.Component {
           ))}
         </div>
         <div>
-          <button className='button' onClick={ ()=>this.mergeSort()}>Merge Sort</button>
+          <button className='button' onClick={ ()=>this.getMergeSort()}>Merge Sort</button>
           <button className='button' onClick={ ()=>this.getBubbleSort()}>Bubble sort</button>
           <button className='button' onClick={ ()=>this.resetArray()}>Generate Array</button>
         </div>
       </div>
     );
   }
-}
-
-function randomIntFromInterval(min, max){
-  return Math.floor(Math.random() * (max - min) ) + min;
 }
 

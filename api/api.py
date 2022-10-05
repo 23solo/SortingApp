@@ -15,7 +15,13 @@ def call_generate_new_array():
 def call_bubble_sort():
   data = request.json
   app.logger.info(data)
-  return bubble_sort(data['data'])
+  return do_bubble_sort(data['data'])
+
+@app.route('/api/merge_sort', methods=['POST'])
+def call_merge_sort():
+  data = request.json
+  app.logger.info(data)
+  return do_merge_sort(data['data'])
 
 if __name__ == '__main__':
   app.run(debug=True)
