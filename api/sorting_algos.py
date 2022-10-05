@@ -82,8 +82,6 @@ def do_merge_sort(data):
     merge(low, mid, high, data)
 
   merge_sort(0, len(data)-1, data)
-  print("printing data")
-  print(animation_pairs)
   return {
     'merge_sort': animation_pairs,
     'sorted_array': data
