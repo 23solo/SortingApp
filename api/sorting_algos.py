@@ -45,6 +45,8 @@ def do_merge_sort(data):
     merge_index = low
 
     while(index_left_array < left_array_length and index_right_array < right_array_length):
+      animation_pairs.append([low + index_left_array, low + index_right_array])
+      animation_pairs.append([low + index_left_array, low + index_right_array])
       if(left_array[index_left_array] <= right_array[index_right_array]):
         animation_pairs.append([merge_index, left_array[index_left_array]])
         data[merge_index] = left_array[index_left_array]
@@ -57,12 +59,16 @@ def do_merge_sort(data):
 
 
     while (index_left_array < left_array_length):
+      animation_pairs.append([low + index_left_array, low + index_left_array])
+      animation_pairs.append([low + index_left_array, low + index_left_array])
       animation_pairs.append([merge_index, left_array[index_left_array]])
       data[merge_index] = left_array[index_left_array]
       index_left_array += 1
       merge_index += 1
     
     while (index_right_array < right_array_length):
+      animation_pairs.append([low + index_right_array, low + index_right_array])
+      animation_pairs.append([low + index_right_array, low + index_right_array])
       animation_pairs.append([merge_index, right_array[index_right_array]])
       data[merge_index] = right_array[index_right_array]
       index_right_array += 1

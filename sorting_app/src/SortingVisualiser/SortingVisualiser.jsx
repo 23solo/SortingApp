@@ -24,9 +24,7 @@ export default class SortingVisualizer extends React.Component {
     };
     let response = await fetch('/api/'+endpoint, requestOptions)
     let response_data = await response.json();
-    if(endpoint == 'bubble_sort'){
-      this.state.array = response_data['sorted_array'];
-    }
+    this.state.array = response_data['sorted_array'];
     return response_data[endpoint] ;
   }
 
@@ -43,7 +41,6 @@ export default class SortingVisualizer extends React.Component {
   async getBubbleSort() {
     
     const animation_pair_index = await this.getApi('bubble_sort', this.state.array);
-    console.log(animation_pair_index);
     const array_bars = document.getElementsByClassName('array-bar');
     for(let i = 0; i< animation_pair_index.length; i++ ){
 
@@ -65,14 +62,24 @@ export default class SortingVisualizer extends React.Component {
     const animation_pair_index = await this.getApi('merge_sort', this.state.array);
     const array_bars = document.getElementsByClassName('array-bar');
     for(let i = 0; i< animation_pair_index.length; i++ ){
-
-      setTimeout(() => {
-        var index = animation_pair_index[i][0];
-        var height = animation_pair_index[i][1];
-        array_bars[index].style.height = `${height}px`;
-        array_bars[index].style.backgroundColor = `black`;
-      }, i * sleep_secs);
-
+      const changeColor = i % 3 !== 2;
+      if (changeColor){
+        setTimeout(() => {
+          var color = i % 3 == 0 ? `black` : `red`
+          var index1 = animation_pair_index[i][0];
+          var index2 = animation_pair_index[i][1];
+          array_bars[index1].style.backgroundColor = color;
+          array_bars[index2].style.backgroundColor = color;
+        }, i * 5);
+      }
+      else{
+        setTimeout(() => {
+          var index = animation_pair_index[i][0];
+          var height = animation_pair_index[i][1];
+          array_bars[index].style.height = `${height}px`;
+        }, i * 5);  
+      }
+     
     }
   }
 
