@@ -63,7 +63,6 @@ export default class SortingVisualizer extends React.Component {
   async getMergeSort() {
     
     const animation_pair_index = await this.getApi('merge_sort', this.state.array);
-    console.log("animationssss",animation_pair_index);
     const array_bars = document.getElementsByClassName('array-bar');
     for(let i = 0; i< animation_pair_index.length; i++ ){
 
@@ -99,9 +98,5 @@ export default class SortingVisualizer extends React.Component {
       </div>
     );
   }
-}
-
-function randomIntFromInterval(min, max){
-  return Math.floor(Math.random() * (max - min) ) + min;
 }
 
