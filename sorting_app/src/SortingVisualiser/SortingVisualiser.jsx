@@ -69,7 +69,6 @@ export default class SortingVisualizer extends React.Component {
       setTimeout(() => {
         var index = animation_pair_index[i][0];
         var height = animation_pair_index[i][1];
-        console.log("height is", array_bars[index].style.height, height);
         array_bars[index].style.height = `${height}px`;
         array_bars[index].style.backgroundColor = `black`;
       }, i * sleep_secs);
