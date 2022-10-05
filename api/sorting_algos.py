@@ -15,15 +15,11 @@ def do_bubble_sort(data):
   array_length = len(data)
   for i in range(0, array_length-1):
     for j in range(0, array_length-i-1):
-      animation_pair_index.append([j, j+1])
-      animation_pair_index.append([j, j+1])
       if (sort_array[j] > sort_array[j+1]):
         animation_pair_index.append([j, j+1])
         temp = sort_array[j]
         sort_array[j] = sort_array[j+1]
         sort_array[j+1] = temp
-      else:
-        animation_pair_index.append([j, j])
   return {
     'bubble_sort': animation_pair_index,
     'sorted_array': sort_array
@@ -86,3 +82,4 @@ def do_merge_sort(data):
     'merge_sort': animation_pairs,
     'sorted_array': data
   }
+
