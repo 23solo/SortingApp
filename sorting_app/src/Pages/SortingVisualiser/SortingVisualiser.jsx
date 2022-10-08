@@ -31,7 +31,6 @@ export default class SortingVisualizer extends React.Component {
   
   async resetArray() {
     const array = await this.getApi('generate_array');
-    console.log(array);
     this.setState({array});
     const array_bars = document.getElementsByClassName('array-bar');
     for(let i =0; i < array_bars.length; i++){
