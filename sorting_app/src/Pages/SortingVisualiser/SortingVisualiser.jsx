@@ -33,7 +33,7 @@ export default class SortingVisualizer extends React.Component {
     const array = await this.getApi('generate_array');
     this.setState({array});
     const array_bars = document.getElementsByClassName('array-bar');
-    for(let i =0; i < array_bars.length; i++){
+    for(let i = 0; i < array_bars.length; i++){
       array_bars[i].style.backgroundColor = 'red';
     }
   }
@@ -91,7 +91,7 @@ export default class SortingVisualizer extends React.Component {
             <div 
               className="array-bar"
               key={ids}
-              style={{height: `${value}px`, backgroundColor : 'red'}}>
+              style={{height: `${value}px`}}>
             </div>
           ))}
         </div>

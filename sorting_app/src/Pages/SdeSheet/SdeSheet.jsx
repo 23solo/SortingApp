@@ -24,7 +24,7 @@ export default class SdeSheet extends React.Component {
     };
     let response = await fetch('/api/'+endpoint, requestOptions)
     let response_data = await response.json();
-    this.state.array = response_data['sorted_array'];
+    this.state.array = response_data['set_matrix_data'];
     return response_data[endpoint] ;
   }
 
@@ -33,78 +33,65 @@ export default class SdeSheet extends React.Component {
     const array = await this.getApi('generate_2darray');
     this.setState({array});
   }
-  async getBubbleSort() {
+  async getSetMatrixZero() {
     
-    const animation_pair_index = await this.getApi('bubble_sort', this.state.array);
-    const array_bars = document.getElementsByClassName('array-bar');
-    for(let i = 0; i< animation_pair_index.length; i++ ){
-
-      setTimeout(() => {
-        var index1 = animation_pair_index[i][0];
-        var index2 = animation_pair_index[i][1];
-        var temp_ht = array_bars[index1].style.height;
-        array_bars[index1].style.height = array_bars[index2].style.height;
-        array_bars[index2].style.height = temp_ht;
-        array_bars[index2].style.backgroundColor = `black`;
-        array_bars[index1].style.backgroundColor = `blue`;
-      }, i * sleep_secs);
-
-    }
-  }
-
-  async getMergeSort() {
-    
-    const animation_pair_index = await this.getApi('merge_sort', this.state.array);
-    const array_bars = document.getElementsByClassName('array-bar');
-    for(let i = 0; i< animation_pair_index.length; i++ ){
+    const animation_pair_index = await this.getApi('set_matrix_zero', this.state.array);
+    for(let i = 0; i < animation_pair_index.length; i++ ){
       const changeColor = i % 3 !== 2;
       if (changeColor){
         setTimeout(() => {
-          var color = i % 3 == 0 ? `black` : `red`
-          var index1 = animation_pair_index[i][0];
-          var index2 = animation_pair_index[i][1];
-          array_bars[index1].style.backgroundColor = color;
-          array_bars[index2].style.backgroundColor = color;
-        }, i * 5);
+          var color = i % 3 == 0 ? `grey` : `white`
+          var all_array = document.getElementsByClassName("" + animation_pair_index[i][0][0] + animation_pair_index[i][0][1]);
+          if (all_array[0].innerHTML == '-1' && color == 'white')
+          {
+            color = 'pink'
+          }
+          all_array[0].style.backgroundColor = color;
+        }, i * 300);
       }
-      else{
+      else {
         setTimeout(() => {
-          var index = animation_pair_index[i][0];
-          var height = animation_pair_index[i][1];
-          array_bars[index].style.height = `${height}px`;
-        }, i * 5);  
+          var all_array = document.getElementsByClassName("" + animation_pair_index[i][0][0] + animation_pair_index[i][0][1]);
+          if(animation_pair_index[i][1] == -1){
+            all_array[0].innerHTML = -1;
+            all_array[0].style.backgroundColor = 'pink';
+          }
+          if(animation_pair_index[i][1] === true){
+            all_array[0].style.backgroundColor = 'pink';
+          }
+        }, i * 300);
       }
-     
+
     }
+    console.log(this.state.array);
   }
+
 
   render() {
     const {array} = this.state;
-    console.log("array is here", array);
     return (
       <div>
         <div>
         <table className="table">
-        <tbody>
-          {array.map((items, idx) => {
-            return (
-              <tr key={idx}>
-                {items.map((item, id) => {
-                  return (
-                      <td key = {id}>{item}</td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+          <tbody>
+            {array.map((items, idx) => {
+              return (
+                <tr className={idx} key={idx}>
+                  {items.map((item, id) => {
+                    return (
+                      <td key = {id} className={"" + idx + id}>{item}</td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
         </div>
       <div></div>  
       
         <div>
-          <button className='button' onClick={ ()=>this.getMergeSort()}>Merge Sort</button>
-          <button className='button' onClick={ ()=>this.getBubbleSort()}>Bubble sort</button>
+          <button className='button' onClick={ ()=>this.getSetMatrixZero()}>Set Matrix Zero</button>
           <button className='button' onClick={ ()=>this.resetArray()}>Generate Array</button>
         </div>
       </div>
