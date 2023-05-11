@@ -25,7 +25,6 @@ export default class SortingVisualizer extends React.Component {
     };
     
     let response = await fetch( config.url.API_URL + endpoint, requestOptions);
-    console.log("solo bro", response);
     let response_data = await response.json();
     this.state.array = response_data['sorted_array'];
     return response_data[endpoint] ;
