@@ -1,7 +1,7 @@
 
 import imp
 import logging # debug purpose
-
+from flask_cors import CORS
 from ast import Return
 from flask import Flask, request, jsonify
 from sorting_algos import *
@@ -9,7 +9,7 @@ from generate_arrays import *
 from solving_sde_sheet import *
 
 app = Flask(__name__)
-
+CORS(app)
 @app.route('/', methods=['GET'])
 def hello():
   return jsonify({"response":"Hello from Solo!!! "})

@@ -22,7 +22,10 @@ export default class SortingVisualizer extends React.Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ data: data })
     };
-    let response = await fetch('/app/'+endpoint, requestOptions);
+    
+    let response = await fetch('https://solo-algo-visualizer.herokuapp.com/app/'+endpoint, requestOptions);
+    
+    console.log("solo bro", response);
     let response_data = await response.json();
     this.state.array = response_data['sorted_array'];
     return response_data[endpoint] ;

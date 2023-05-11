@@ -22,7 +22,7 @@ export default class SdeSheet extends React.Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ data: data })
     };
-    let response = await fetch('/app/'+endpoint, requestOptions)
+    let response = await fetch('https://solo-algo-visualizer.herokuapp.com/app/'+endpoint, requestOptions)
     let response_data = await response.json();
     this.state.array = response_data['set_matrix_data'];
     return response_data[endpoint] ;
