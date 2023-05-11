@@ -35,7 +35,6 @@ export default class SdeSheet extends React.Component {
     this.setState({array});
   }
   async getSetMatrixZero() {
-    console.log("check array", this.state.array);
     const animation_pair_index = await this.getApi('set_matrix_zero', this.state.array);
     for(let i = 0; i < animation_pair_index.length; i++ ){
       const changeColor = i % 3 !== 2;
