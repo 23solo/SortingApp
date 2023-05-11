@@ -23,5 +23,9 @@ def call_merge_sort():
   app.logger.info(data)
   return do_merge_sort(data['data'])
 
+@app.route('/', methods=['GET'])
+def call_home():
+  return '<h1>Hello ! The server is Up</h1>'
+
 if __name__ == '__main__':
   app.run(debug=True)
