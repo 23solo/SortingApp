@@ -11,7 +11,7 @@ app = Flask(__name__)
 def call_generate_new_array():
   return generate_new_array()
 
-@app.route('/api/bubble_sort', methods=['POST', 'GET'])
+@app.route('/api/bubble_sort', methods=['POST'])
 def call_bubble_sort():
   data = request.json
   app.logger.info(data)
