@@ -12,7 +12,7 @@ app = Flask(__name__)
 CORS(app)
 @app.route('/', methods=['GET'])
 def hello():
-  return jsonify({"response":"Hello from Solo!!! "})
+  return '<h1>Hello! The server is Up</h1>'
 
 @app.route('/app/generate_array', methods=['POST'])
 def call_generate_new_array():
