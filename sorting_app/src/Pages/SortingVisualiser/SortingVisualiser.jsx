@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './SortingVisualiser.css';
+import { config } from '../../constants';
 
 const sleep_secs = 1;
 
@@ -22,7 +23,8 @@ export default class SortingVisualizer extends React.Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ data: data })
     };
-    let response = await fetch('/api/'+endpoint, requestOptions)
+    
+    let response = await fetch( config.url.API_URL + endpoint, requestOptions);
     let response_data = await response.json();
     this.state.array = response_data['sorted_array'];
     return response_data[endpoint] ;
@@ -31,10 +33,9 @@ export default class SortingVisualizer extends React.Component {
   
   async resetArray() {
     const array = await this.getApi('generate_array');
-    console.log(array);
     this.setState({array});
     const array_bars = document.getElementsByClassName('array-bar');
-    for(let i =0; i < array_bars.length; i++){
+    for(let i = 0; i < array_bars.length; i++){
       array_bars[i].style.backgroundColor = 'red';
     }
   }
@@ -92,7 +93,7 @@ export default class SortingVisualizer extends React.Component {
             <div 
               className="array-bar"
               key={ids}
-              style={{height: `${value}px`, backgroundColor : 'red'}}>
+              style={{height: `${value}px`}}>
             </div>
           ))}
         </div>

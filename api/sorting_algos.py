@@ -1,14 +1,3 @@
-import random
-
-def generate_new_array():
-  randomlist = []
-  for i in range(150):
-    n = random.randint(5,600)
-    randomlist.append(n)
-  return {
-  'generate_array': randomlist
-  }
-
 def do_bubble_sort(data):
   sort_array = data
   animation_pair_index = []
