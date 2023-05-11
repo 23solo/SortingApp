@@ -24,7 +24,6 @@ export default class SdeSheet extends React.Component {
       body: JSON.stringify({ data: data })
     };
     let response = await fetch(config.url.API_URL + endpoint, requestOptions);
-    console.log(config.url.API_URL);
     let response_data = await response.json();
     this.state.array = response_data['set_matrix_data'];
     return response_data[endpoint] ;
