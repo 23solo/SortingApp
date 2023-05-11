@@ -1,6 +1,6 @@
 const prod = {
     url: {
-     API_URL: 'https://myapp.herokuapp.com'}
+     API_URL: 'https://solanki-algo-visualiser.onrender.com/app/'}
    };
    const dev = {
     url: {
