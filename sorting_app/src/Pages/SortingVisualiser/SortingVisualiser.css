@@ -1,18 +1,30 @@
-.array-bar {
+
+.container-button{
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  display: block;
+}
+
+.array-bar-bubble {
     display : inline-block;
     margin : 0 2px;
     width : 0.27rem;
 }
+.array-bar-merge {
+  display : inline-block;
+  margin : 0 2px;
+  width : 0.27rem;
+}
 .array-container {
-    margin-top: 20px;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    border: 8px solid rgb(25, 25, 25);
-    padding: 5px;
+
+    border: 4px solid rgb(25, 25, 25);
+    width: auto;
+    font-size: 0;
+    background: rgb(210, 230, 230);
 }
 .button {
+  margin-right: 10px;
   display: inline-block;
   padding: 15px 25px;
   font-size: 24px;
@@ -33,3 +45,10 @@
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+.outer-container{
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 5px;
+}
+

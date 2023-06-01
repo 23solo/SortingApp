@@ -2,7 +2,7 @@ import random, math
 
 def generate_new_array():
   randomlist = []
-  for i in range(150):
+  for i in range(50):
     n = random.randint(5,600)
     randomlist.append(n)
   return {

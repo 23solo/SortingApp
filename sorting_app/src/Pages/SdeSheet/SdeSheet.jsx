@@ -34,8 +34,8 @@ export default class SdeSheet extends React.Component {
     const array = await this.getApi('generate_2darray');
     this.setState({array});
   }
-  async getSetMatrixZero() {
-    const animation_pair_index = await this.getApi('set_matrix_zero', this.state.array);
+
+  setMatrixAnimation(animation_pair_index){
     for(let i = 0; i < animation_pair_index.length; i++ ){
       const changeColor = i % 3 !== 2;
       if (changeColor){
@@ -63,7 +63,21 @@ export default class SdeSheet extends React.Component {
       }
 
     }
-    console.log(this.state.array);
+  }
+
+  setMatrixBase(animation_pair_index){
+    console.log("Inside here");
+    for(let i = 0; i < animation_pair_index.length; i++ ){
+      // console.log(document.getElementsByClassName("" + animation_pair_index[i][0][0] + animation_pair_index[i][0][1]));
+      document.getElementsByClassName("" + animation_pair_index[i][0][0] + animation_pair_index[i][0][1])[0].style.backgroundColor = 'white';
+    }
+  }
+
+
+  async getSetMatrixZero() {
+    const animation_pair_index = await this.getApi('set_matrix_zero', this.state.array);
+    this.setMatrixAnimation(animation_pair_index);
+    this.setMatrixBase(animation_pair_index);
   }
 
 

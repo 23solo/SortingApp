@@ -21,7 +21,7 @@ function App() {
     <>
       <div className='container'>
         < Navbar />
-        <div className='container'>  
+        <div className='container'>
           {component}
         </div>
       </div>

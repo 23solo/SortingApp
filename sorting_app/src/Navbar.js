@@ -1,11 +1,11 @@
 export default function Navbar() {
     return <nav className="nav">
-        <a href="/" className="site-title">Base DOM</a>
+        <a className ="nav-item" href="/">Home</a>
         <ul>
-            <li>
+            <li className="nav-item">
                 <a href="/sorting_visualizer">Sorting Visualiser</a>
             </li>
-            <li>
+            <li className="nav-item">
                 <a href="/sde_sheet">SDE Sheet</a>
 
             </li>
